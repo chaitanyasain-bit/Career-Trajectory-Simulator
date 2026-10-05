@@ -1,0 +1,74 @@
+# ── Python ───────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.tsbuildinfo
+.hypothesis/
+*.coverage
+.coverage
+htmlcov/
+.tox/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# ── Node / Frontend ───────────────────────────────────────────────────────────
+node_modules/
+.npm/
+.pnpm-store/
+dist/
+.vite/
+
+# ── Environment / Secrets ─────────────────────────────────────────────────────
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
+
+# ── Database ──────────────────────────────────────────────────────────────────
+*.db
+*.sqlite
+*.sqlite3
+
+# ── OS ───────────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Editor ───────────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ── Data / ML ─────────────────────────────────────────────────────────────────
+data/datasets/*.csv
+data/datasets/*.parquet
+data/models/*.pkl
+data/models/*.joblib
+data/models/*.h5
+*.npy
+*.npz
+
+# ── Logs ─────────────────────────────────────────────────────────────────────
+logs/
+*.log
+
+# ── Docker ───────────────────────────────────────────────────────────────────
+.docker/

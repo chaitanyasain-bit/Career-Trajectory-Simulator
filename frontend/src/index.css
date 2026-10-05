@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root { font-family: 'DM Sans', system-ui, sans-serif; color-scheme: light; }
+  html { min-width: 320px; min-height: 100%; scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  body { @apply m-0 min-h-screen bg-[#f5f7f8] text-slate-900; }
+  button, input, select, textarea { font: inherit; }
+  button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { @apply outline-none ring-2 ring-teal-500 ring-offset-2; }
+  h1, h2, h3, h4 { font-family: 'Manrope', 'DM Sans', system-ui, sans-serif; }
+  ::selection { @apply bg-teal-100 text-teal-950; }
+}
+
+@layer components {
+  .panel { @apply rounded-2xl border border-slate-200/90 bg-white p-5 shadow-[0_2px_10px_rgba(15,23,42,.025)] sm:p-6; }
+  .eyebrow { @apply text-[10px] font-bold uppercase tracking-[.16em] text-teal-800; }
+  .section-label { @apply text-[10px] font-bold uppercase tracking-[.12em] text-slate-400; }
+  .nav-section-label { @apply px-3 text-[10px] font-bold uppercase tracking-[.15em] text-slate-400; }
+  .nav-link { @apply flex items-center gap-3 rounded-xl px-3 py-2.5 text-[13px] font-medium text-slate-500 transition hover:bg-slate-50 hover:text-slate-900; }
+  .nav-link-active { @apply bg-teal-50 text-teal-900 shadow-[inset_2px_0_0_#0f766e]; }
+  .brand-mark { @apply flex h-9 w-9 items-center justify-center rounded-xl bg-teal-700 text-white shadow-sm; }
+  .avatar { @apply flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-teal-100 text-sm font-bold text-teal-800; }
+  .avatar-small { @apply h-8 w-8 text-xs; }
+  .btn-primary { @apply inline-flex min-h-10 items-center justify-center gap-2 rounded-xl bg-teal-800 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-teal-700 disabled:cursor-not-allowed disabled:opacity-50; }
+  .btn-secondary { @apply inline-flex min-h-9 items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-sm font-semibold text-slate-700 shadow-sm transition hover:border-slate-300 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50; }
+  .btn-quiet { @apply inline-flex items-center gap-1.5 rounded-lg px-2 py-1.5 text-xs font-semibold text-slate-500 transition hover:bg-white hover:text-teal-800; }
+  .field-label { @apply flex flex-col gap-2 text-xs font-semibold text-slate-700; }
+  .input-control { @apply w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-sm font-normal text-slate-800 shadow-sm outline-none transition placeholder:text-slate-400 hover:border-slate-300 focus:border-teal-600 focus:ring-2 focus:ring-teal-600/10; }
+  .input-icon-wrap { @apply relative block; }
+  .input-icon { @apply absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400; }
+  .input-trailing { @apply absolute right-2.5 top-1/2 -translate-y-1/2 rounded-md p-1 text-slate-400 hover:bg-slate-100 hover:text-slate-700; }
+  .section-icon { @apply flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-teal-50 text-teal-800 [&>svg]:h-[18px] [&>svg]:w-[18px]; }
+  .icon-button { @apply inline-flex h-9 w-9 items-center justify-center rounded-lg text-slate-400 transition hover:bg-rose-50 hover:text-rose-600; }
+  .badge { @apply inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[10px] font-semibold leading-4; }
+  .badge-teal { @apply bg-teal-50 text-teal-800; }
+  .badge-violet { @apply bg-violet-50 text-violet-800; }
+  .badge-green { @apply bg-emerald-50 text-emerald-800; }
+  .badge-amber { @apply bg-amber-50 text-amber-800; }
+  .badge-slate { @apply bg-slate-100 text-slate-600; }
+  .badge-button { @apply cursor-pointer border border-slate-200 bg-white text-slate-600 transition hover:border-teal-300 hover:bg-teal-50 hover:text-teal-900; }
+  .rank-chip { @apply flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-xs font-bold text-slate-600; }
+  .metric-icon { @apply flex h-9 w-9 items-center justify-center rounded-xl [&>svg]:h-[18px] [&>svg]:w-[18px]; }
+  .metric-teal { @apply bg-teal-50 text-teal-700; }
+  .metric-blue { @apply bg-blue-50 text-blue-700; }
+  .metric-violet { @apply bg-violet-50 text-violet-700; }
+  .metric-amber { @apply bg-amber-50 text-amber-700; }
+  .empty-state { @apply flex min-h-60 flex-col items-center justify-center px-5 py-10 text-center; }
+}
+
+.spinner { width: 18px; height: 18px; border: 2px solid #cbd5e1; border-top-color: #0f766e; border-radius: 9999px; animation: spin .7s linear infinite; }
+.spinner-large { width: 34px; height: 34px; border-width: 3px; }
+@keyframes spin { to { transform: rotate(360deg); } }

@@ -1,0 +1,7 @@
+export { LoginPage, RegisterPage } from './AuthPages'
+export { DashboardPage } from './DashboardPage'
+export { ProfilePage } from './ProfilePage'
+export { CareerDetailPage, ComparisonPage, SimulationPage } from './SimulationPages'
+export { HistoryDetailPage, HistoryPage } from './HistoryPages'
+export { RoadmapPage } from './RoadmapPage'
+export { WhatIfPage } from './WhatIfPage'
