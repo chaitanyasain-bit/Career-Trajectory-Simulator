@@ -26,6 +26,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 # ── Import all models so Alembic can discover every table ────────────────────
 import app.models  # noqa: F401, E402  — side-effect: registers all mappers
 from app.config import settings  # noqa: E402
+from app.db.asyncpg_url import normalize_asyncpg_url  # noqa: E402
 from app.db.base import Base  # noqa: E402
 
 # ── Alembic config ───────────────────────────────────────────────────────────
@@ -36,7 +37,9 @@ if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
 # Override the URL from our settings so credentials come from .env
-config.set_main_option("sqlalchemy.url", settings.DATABASE_URL)
+database_url, connect_args = normalize_asyncpg_url(settings.DATABASE_URL)
+rendered_url = database_url.render_as_string(hide_password=False).replace("%", "%%")
+config.set_main_option("sqlalchemy.url", rendered_url)
 
 target_metadata = Base.metadata
 
@@ -85,6 +88,7 @@ async def run_async_migrations() -> None:
         config.get_section(config.config_ini_section, {}),
         prefix="sqlalchemy.",
         poolclass=pool.NullPool,
+        connect_args=connect_args,
     )
 
     async with connectable.connect() as connection:

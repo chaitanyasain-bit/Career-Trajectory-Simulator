@@ -22,6 +22,7 @@ from sqlalchemy.ext.asyncio import (
 )
 
 from app.config import settings
+from app.db.asyncpg_url import normalize_asyncpg_url
 
 
 def _build_engine() -> AsyncEngine:
@@ -43,12 +44,14 @@ def _build_engine() -> AsyncEngine:
             poolclass=StaticPool,
         )
     if url.startswith("postgresql+asyncpg://"):
+        database_url, connect_args = normalize_asyncpg_url(url)
         return create_async_engine(
-            url,
+            database_url,
             echo=settings.DEBUG,
             pool_pre_ping=True,
             pool_size=10,
             max_overflow=20,
+            connect_args=connect_args,
         )
     raise ValueError(
         "DATABASE_URL must use postgresql+asyncpg or sqlite+aiosqlite."
