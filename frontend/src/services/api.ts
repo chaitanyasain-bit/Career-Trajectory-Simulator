@@ -32,7 +32,11 @@ import type {
 // ---------------------------------------------------------------------------
 
 const http: AxiosInstance = axios.create({
-  baseURL: '/api/v1',
+  baseURL:
+    import.meta.env.VITE_API_BASE_URL?.trim() ||
+    (import.meta.env.DEV
+      ? '/api/v1'
+      : 'https://career-trajectory-simulator.onrender.com/api/v1'),
   headers: {
     'Content-Type': 'application/json',
   },
