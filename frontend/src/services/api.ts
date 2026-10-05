@@ -31,12 +31,16 @@ import type {
 // Axios instance
 // ---------------------------------------------------------------------------
 
+const configuredApiBaseUrl =
+  import.meta.env.VITE_API_BASE_URL?.trim() ||
+  (import.meta.env.DEV ? '' : 'https://career-trajectory-simulator.onrender.com')
+const normalizedApiBaseUrl = configuredApiBaseUrl.replace(/\/+$/, '')
+const apiBaseUrl = normalizedApiBaseUrl.endsWith('/api/v1')
+  ? normalizedApiBaseUrl
+  : `${normalizedApiBaseUrl}/api/v1`
+
 const http: AxiosInstance = axios.create({
-  baseURL:
-    import.meta.env.VITE_API_BASE_URL?.trim() ||
-    (import.meta.env.DEV
-      ? '/api/v1'
-      : 'https://career-trajectory-simulator.onrender.com/api/v1'),
+  baseURL: apiBaseUrl,
   headers: {
     'Content-Type': 'application/json',
   },
