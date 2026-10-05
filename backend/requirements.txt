@@ -10,6 +10,7 @@ pydantic-settings>=2.2.0
 
 # ── Database ──────────────────────────────────────────────────────────────────
 sqlalchemy>=2.0.30
+greenlet>=3.1.1            # required by SQLAlchemy's asyncio extension
 asyncpg>=0.29.0           # async PostgreSQL driver (has wheels for Python 3.14+)
 alembic>=1.13.0
 aiosqlite>=0.20.0         # async SQLite driver used for unit tests (no Postgres needed)
